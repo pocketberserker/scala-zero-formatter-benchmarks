@@ -30,7 +30,7 @@ package benchmarks
 import java.util.concurrent.TimeUnit
 import org.openjdk.jmh.annotations._
 
-class ExampleData extends ArgonautData with CirceData with ZeroFormatterData with Msgpack4zData {
+class ExampleData extends ArgonautData with CirceData with ZeroFormatterData with Msgpack4zData with ScalaPBData {
   lazy val ints: List[Int] = (0 to 1000).toList
 
   lazy val foos: Map[String, Foo] = List.tabulate(100) { i =>
@@ -52,7 +52,7 @@ class ExampleData extends ArgonautData with CirceData with ZeroFormatterData wit
 @BenchmarkMode(Array(Mode.Throughput))
 @OutputTimeUnit(TimeUnit.SECONDS)
 class EncodingBenchmark extends ExampleData
-  with ArgonautEncoding with CirceEncoding with ZeroFormatterEncoding with Msgpack4zEncoding
+  with ArgonautEncoding with CirceEncoding with ZeroFormatterEncoding with Msgpack4zEncoding with ScalaPBEncoding
 
 /**
  * Compare the performance of decoding operations.
@@ -65,4 +65,4 @@ class EncodingBenchmark extends ExampleData
 @BenchmarkMode(Array(Mode.Throughput))
 @OutputTimeUnit(TimeUnit.SECONDS)
 class DecodingBenchmark extends ExampleData
-  with ArgonautDecoding with CirceDecoding with ZeroFormatterDecoding with Msgpack4zDecoding
+  with ArgonautDecoding with CirceDecoding with ZeroFormatterDecoding with Msgpack4zDecoding with ScalaPBDecoding

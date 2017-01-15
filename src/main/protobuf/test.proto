@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package benchmarks;
 
+/*
 message Foo {
   string s = 1;
   double d = 2;
@@ -13,6 +14,7 @@ message Foo {
 message Foos {
   map<string, Foo> value = 1;
 }
+*/
 
 message Ints {
   repeated int32 value = 1;

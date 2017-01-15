@@ -30,12 +30,16 @@ val baseSettings = Seq(
 lazy val benchmark = project.in(file("."))
   .settings(baseSettings)
   .settings(
+    PB.targets in Compile := Seq(
+      scalapb.gen(grpc=false) -> (sourceManaged in Compile).value
+    ),
     libraryDependencies ++= Seq(
       "io.circe" %% "circe-core" % "0.7.0-M2",
       "io.circe" %% "circe-parser" % "0.7.0-M2",
       "io.argonaut" %% "argonaut" % "6.2-RC2",
       "com.github.pocketberserker" %% "zero-formatter" % "0.1.0",
       "com.github.xuwei-k" %% "msgpack4z-core" % "0.3.5",
-      "com.github.xuwei-k" %% "msgpack4z-native" % "0.3.1"
+      "com.github.xuwei-k" %% "msgpack4z-native" % "0.3.1",
+      "com.trueaccord.scalapb" %% "scalapb-runtime" % com.trueaccord.scalapb.compiler.Version.scalapbVersion % "protobuf"
     )
   ).enablePlugins(JmhPlugin)
