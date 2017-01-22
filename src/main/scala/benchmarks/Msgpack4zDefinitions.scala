@@ -5,19 +5,17 @@ import msgpack4z.CodecInstances.all._
 import org.openjdk.jmh.annotations._
 
 trait Msgpack4zFooInstances {
-  val factory = new PackerUnpackerFactory {
-    def packer = MsgOutBuffer.create()
-    def unpacker(bytes: Array[Byte]) = MsgInBuffer(bytes)
-  }
 
-  val mapCodec = CaseMapCodec.string(factory)
-
-  implicit val msgpack4zFoo = mapCodec.codec(Foo.apply _, Foo.unapply _)("s", "d", "i", "l", "bs")
+  implicit val msgpack4zFoo: MsgpackCodec[Foo] = CaseCodec.codec(Foo.apply _, Foo.unapply _)
 }
 
 trait Msgpack4zData { self: ExampleData =>
   @inline def encodeMZ[A](a: A)(implicit C: MsgpackCodec[A]): Array[Byte] =
-    C.toBytes(a, MsgOutBuffer.create())
+    C.toBytes(a, new MsgpackJavaPacker())
+
+  @inline def decodeMZ[A](a: Array[Byte])(implicit C: MsgpackCodec[A]): A =
+    C.unpackAndClose(MsgpackJavaUnpacker.defaultUnpacker(a))
+      .getOrElse(throw new Exception)
 
   val foosMZ: Array[Byte] = encodeMZ(foos)
   val intsMZ: Array[Byte] = encodeMZ(ints)
@@ -34,11 +32,11 @@ trait Msgpack4zEncoding { self: ExampleData =>
 trait Msgpack4zDecoding { self: ExampleData =>
   @Benchmark
   def decodeFoosMZ: Map[String, Foo] =
-    MsgpackCodec[Map[String, Foo]].unpackAndClose(MsgInBuffer(foosMZ))
+    MsgpackCodec[Map[String, Foo]].unpackAndClose(MsgpackJavaUnpacker.defaultUnpacker(foosMZ))
       .getOrElse(throw new Exception)
 
   @Benchmark
   def decodeIntsMZ: List[Int] =
-    MsgpackCodec[List[Int]].unpackAndClose(MsgInBuffer(intsMZ))
+    MsgpackCodec[List[Int]].unpackAndClose(MsgpackJavaUnpacker.defaultUnpacker(intsMZ))
       .getOrElse(throw new Exception)
 }

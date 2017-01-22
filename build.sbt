@@ -39,7 +39,7 @@ lazy val benchmark = project.in(file("."))
       "io.argonaut" %% "argonaut" % "6.2-RC2",
       "com.github.pocketberserker" %% "zero-formatter-cats-core" % "0.2.0",
       "com.github.xuwei-k" %% "msgpack4z-core" % "0.3.5",
-      "com.github.xuwei-k" %% "msgpack4z-native" % "0.3.1",
+      "com.github.xuwei-k" % "msgpack4z-java" % "0.3.4",
       "com.trueaccord.scalapb" %% "scalapb-runtime" % com.trueaccord.scalapb.compiler.Version.scalapbVersion % "protobuf"
     )
   ).enablePlugins(JmhPlugin)
