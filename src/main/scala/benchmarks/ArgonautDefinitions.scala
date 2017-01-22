@@ -22,6 +22,7 @@ change log
 
   * change benchmark code
   * delete printing and parsing benchmarks
+  * List to Vector
 
 */
 
@@ -41,7 +42,7 @@ trait ArgonautFooInstances {
       d  <- (c --\ "d").as[Double]
       i  <- (c --\ "i").as[Int]
       l  <- (c --\ "l").as[Long]
-      bs <- (c --\ "bs").as[List[Boolean]]
+      bs <- (c --\ "bs").as[Vector[Boolean]]
     } yield Foo(s, d, i, l, bs)
   )
 }

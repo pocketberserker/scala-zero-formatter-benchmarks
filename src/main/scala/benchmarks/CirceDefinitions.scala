@@ -22,6 +22,7 @@ change log
 
   * change benchmark code
   * delete printing and parsing benchmarks
+  * List to Vector
 
 */
 
@@ -47,7 +48,7 @@ trait CirceFooInstances {
       d <- c.get[Double]("d").right
       i <- c.get[Int]("i").right
       l <- c.get[Long]("l").right
-      bs <- c.get[List[Boolean]]("bs").right
+      bs <- c.get[Vector[Boolean]]("bs").right
     } yield Foo(s, d, i, l, bs)
   }
 }

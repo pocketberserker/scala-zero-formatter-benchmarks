@@ -22,6 +22,7 @@ change log
 
   * change benchmark targets
   * delete printing and parsing benchmarks
+  * List to Vector
 
 */
 
@@ -34,7 +35,7 @@ class ExampleData extends ArgonautData with CirceData with ZeroFormatterData wit
   lazy val ints: List[Int] = (0 to 1000).toList
 
   lazy val foos: Map[String, Foo] = List.tabulate(100) { i =>
-    ("b" * i) -> Foo("a" * i, (i + 2.0) / (i + 1.0), i, i * 1000L, (0 to i).map(_ % 2 == 0).toList)
+    ("b" * i) -> Foo("a" * i, (i + 2.0) / (i + 1.0), i, i * 1000L, (0 to i).map(_ % 2 == 0).toVector)
   }.toMap
 
   val intsJson: String = intsC.noSpaces
