@@ -4,26 +4,26 @@ import org.openjdk.jmh.annotations._
 
 trait ScalaPBData { self: ExampleData =>
 
-  //val foosPBValue =
-  //  test.Foos(foos.mapValues(v => test.Foo(v.s, v.d, v.i, v.l, v.bs)))
+  lazy val fooPBValue =
+    test.Foo("a" * 100, 102.0 / 101.0, 100, 100000L, (0 to 100).map(_ % 2 == 0).toVector)
 
-  val intsPBValue = test.Ints(ints)
+  lazy val intsPBValue = test.Ints((0 to 1000).toVector)
 
-  //val foosPB: Array[Byte] = foosPBValue.toByteArray
+  val fooPB: Array[Byte] = fooPBValue.toByteArray
   val intsPB: Array[Byte] = intsPBValue.toByteArray
 }
 
 trait ScalaPBEncoding { self: ExampleData =>
-  //@Benchmark
-  //def encodeFoosPB: Array[Byte] = foosPBValue.toByteArray
+  @Benchmark
+  def encodeFooPB: Array[Byte] = fooPBValue.toByteArray
 
   @Benchmark
   def encodeIntsPB: Array[Byte] = intsPBValue.toByteArray
 }
 
 trait ScalaPBDecoding { self: ExampleData =>
-  //@Benchmark
-  //def decodeFoosPB: test.Foos = test.Foos.parseFrom(foosPB)
+  @Benchmark
+  def decodeFooPB: test.Foo = test.Foo.parseFrom(fooPB)
 
   @Benchmark
   def decodeIntsPB: test.Ints = test.Ints.parseFrom(intsPB)

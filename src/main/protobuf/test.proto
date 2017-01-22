@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package benchmarks;
 
-/*
 message Foo {
   string s = 1;
   double d = 2;
@@ -11,6 +10,7 @@ message Foo {
   repeated bool bs = 5;
 }
 
+/*
 message Foos {
   map<string, Foo> value = 1;
 }
