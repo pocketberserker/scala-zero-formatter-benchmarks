@@ -73,5 +73,5 @@ trait CirceDecoding { self: ExampleData =>
   def decodeFoosC: Map[String, Foo] = decode[Map[String, Foo]](foosJson).right.getOrElse(throw new Exception)
 
   @Benchmark
-  def decodeIntsC: List[Int] = decode[List[Int]](intsJson).right.getOrElse(throw new Exception)
+  def decodeIntsC: Vector[Int] = decode[Vector[Int]](intsJson).right.getOrElse(throw new Exception)
 }

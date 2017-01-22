@@ -36,7 +36,7 @@ trait Msgpack4zDecoding { self: ExampleData =>
       .getOrElse(throw new Exception)
 
   @Benchmark
-  def decodeIntsMZ: List[Int] =
-    MsgpackCodec[List[Int]].unpackAndClose(MsgpackJavaUnpacker.defaultUnpacker(intsMZ))
+  def decodeIntsMZ: Vector[Int] =
+    MsgpackCodec[Vector[Int]].unpackAndClose(MsgpackJavaUnpacker.defaultUnpacker(intsMZ))
       .getOrElse(throw new Exception)
 }

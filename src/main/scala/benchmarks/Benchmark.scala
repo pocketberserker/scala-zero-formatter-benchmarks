@@ -32,7 +32,7 @@ import java.util.concurrent.TimeUnit
 import org.openjdk.jmh.annotations._
 
 class ExampleData extends ArgonautData with CirceData with ZeroFormatterData with Msgpack4zData with ScalaPBData {
-  lazy val ints: List[Int] = (0 to 1000).toList
+  lazy val ints: Vector[Int] = (0 to 1000).toVector
 
   lazy val foos: Map[String, Foo] = List.tabulate(100) { i =>
     ("b" * i) -> Foo("a" * i, (i + 2.0) / (i + 1.0), i, i * 1000L, (0 to i).map(_ % 2 == 0).toVector)

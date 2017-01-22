@@ -67,5 +67,5 @@ trait ArgonautDecoding { self: ExampleData =>
   def decodeFoosA: Map[String, Foo] = foosJson.decodeOption[Map[String, Foo]].getOrElse(throw new Exception)
 
   @Benchmark
-  def decodeIntsA: List[Int] = intsJson.decodeOption[List[Int]].getOrElse(throw new Exception)
+  def decodeIntsA: Vector[Int] = intsJson.decodeOption[Vector[Int]].getOrElse(throw new Exception)
 }
