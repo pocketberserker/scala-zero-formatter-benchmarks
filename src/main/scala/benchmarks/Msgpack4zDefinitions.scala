@@ -13,6 +13,7 @@ trait Msgpack4zData { self: ExampleData =>
   @inline def encodeMZ[A](a: A)(implicit C: MsgpackCodec[A]): Array[Byte] =
     C.toBytes(a, new MsgpackJavaPacker())
 
+  val fooMZ: Array[Byte] = encodeMZ(foo)
   val foosMZ: Array[Byte] = encodeMZ(foos)
   val intsMZ: Array[Byte] = encodeMZ(ints)
 }
