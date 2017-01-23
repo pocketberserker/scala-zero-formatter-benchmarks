@@ -36,7 +36,7 @@ trait Msgpack4zDecoding { self: ExampleData =>
 
   @Benchmark
   def decodeFooMZ: Foo =
-    MsgpackCodec[Foo].unpackAndClose(MsgpackJavaUnpacker.defaultUnpacker(foosMZ))
+    MsgpackCodec[Foo].unpackAndClose(MsgpackJavaUnpacker.defaultUnpacker(fooMZ))
       .getOrElse(throw new Exception)
 
   @Benchmark
