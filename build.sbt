@@ -40,6 +40,7 @@ lazy val benchmark = project.in(file("."))
       "com.github.pocketberserker" %% "zero-formatter-cats-core" % "0.3.0",
       "com.github.xuwei-k" %% "msgpack4z-core" % "0.3.5",
       "com.github.xuwei-k" % "msgpack4z-java" % "0.3.4",
-      "com.trueaccord.scalapb" %% "scalapb-runtime" % com.trueaccord.scalapb.compiler.Version.scalapbVersion % "protobuf"
+      "com.trueaccord.scalapb" %% "scalapb-runtime" % com.trueaccord.scalapb.compiler.Version.scalapbVersion % "protobuf",
+      "org.scalatest" %% "scalatest" % "3.0.1" % "test"
     )
   ).enablePlugins(JmhPlugin)
