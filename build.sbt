@@ -36,9 +36,6 @@ lazy val benchmark = project.in(file("."))
       scalapb.gen(grpc=false) -> (sourceManaged in Compile).value
     ),
     libraryDependencies ++= Seq(
-      "io.circe" %% "circe-core" % "0.7.0",
-      "io.circe" %% "circe-parser" % "0.7.0",
-      "io.argonaut" %% "argonaut" % "6.2-RC2",
       "com.github.pocketberserker" %% "zero-formatter-cats-core" % zeroFormatterVersion,
       "com.github.pocketberserker" %% "zero-formatter-unsafe" % zeroFormatterVersion,
       "com.github.xuwei-k" %% "msgpack4z-core" % "0.3.5",

@@ -32,7 +32,7 @@ package benchmarks
 import java.util.concurrent.TimeUnit
 import org.openjdk.jmh.annotations._
 
-class ExampleData extends ArgonautData with CirceData with ZeroFormatterData with Msgpack4zData with ScalaPBData {
+class ExampleData extends ZeroFormatterData with Msgpack4zData with ScalaPBData {
   lazy val ints: Vector[Int] = (0 to 1000).toVector
 
   lazy val foos: Map[String, Foo] = List.tabulate(100) { i =>
@@ -40,9 +40,6 @@ class ExampleData extends ArgonautData with CirceData with ZeroFormatterData wit
   }.toMap
 
   lazy val foo: Foo = Foo("a" * 100, 102.0 / 101.0, 100, 100000L, (0 to 100).map(_ % 2 == 0).toVector)
-
-  val intsJson: String = intsC.noSpaces
-  val foosJson: String = foosC.noSpaces
 }
 
 /**
@@ -56,7 +53,7 @@ class ExampleData extends ArgonautData with CirceData with ZeroFormatterData wit
 @BenchmarkMode(Array(Mode.Throughput))
 @OutputTimeUnit(TimeUnit.SECONDS)
 class EncodingBenchmark extends ExampleData
-  with ArgonautEncoding with CirceEncoding with ZeroFormatterEncoding with Msgpack4zEncoding with ScalaPBEncoding
+  with ZeroFormatterEncoding with Msgpack4zEncoding with ScalaPBEncoding
 
 /**
  * Compare the performance of decoding operations.
@@ -69,4 +66,4 @@ class EncodingBenchmark extends ExampleData
 @BenchmarkMode(Array(Mode.Throughput))
 @OutputTimeUnit(TimeUnit.SECONDS)
 class DecodingBenchmark extends ExampleData
-  with ArgonautDecoding with CirceDecoding with ZeroFormatterDecoding with Msgpack4zDecoding with ScalaPBDecoding
+  with ZeroFormatterDecoding with Msgpack4zDecoding with ScalaPBDecoding

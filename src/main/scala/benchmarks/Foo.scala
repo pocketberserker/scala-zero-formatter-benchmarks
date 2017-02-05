@@ -11,5 +11,5 @@ case class Foo(
   @Index(4) bs: Vector[Boolean]
 )
 
-object Foo extends ArgonautFooInstances with CirceFooInstances with ZeroFormatterFooInstances with Msgpack4zFooInstances {
+object Foo extends ZeroFormatterFooInstances with Msgpack4zFooInstances {
 }
