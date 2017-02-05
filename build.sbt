@@ -27,6 +27,8 @@ val baseSettings = Seq(
   )
 )
 
+val zeroFormatterVersion = "0.4.0"
+
 lazy val benchmark = project.in(file("."))
   .settings(baseSettings)
   .settings(
@@ -37,7 +39,8 @@ lazy val benchmark = project.in(file("."))
       "io.circe" %% "circe-core" % "0.7.0",
       "io.circe" %% "circe-parser" % "0.7.0",
       "io.argonaut" %% "argonaut" % "6.2-RC2",
-      "com.github.pocketberserker" %% "zero-formatter-cats-core" % "0.3.0",
+      "com.github.pocketberserker" %% "zero-formatter-cats-core" % zeroFormatterVersion,
+      "com.github.pocketberserker" %% "zero-formatter-unsafe" % zeroFormatterVersion,
       "com.github.xuwei-k" %% "msgpack4z-core" % "0.3.5",
       "com.github.xuwei-k" % "msgpack4z-java" % "0.3.4",
       "com.trueaccord.scalapb" %% "scalapb-runtime" % com.trueaccord.scalapb.compiler.Version.scalapbVersion % "protobuf",

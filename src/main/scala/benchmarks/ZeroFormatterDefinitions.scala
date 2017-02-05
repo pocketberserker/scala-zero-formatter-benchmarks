@@ -18,7 +18,7 @@ trait ZeroFormatterBarInstances {
 
 trait ZeroFormatterData { self: ExampleData =>
   @inline def encodeZ[A](a: A)(implicit F: Formatter[A]): Array[Byte] =
-    ZeroFormatter.serialize(a)
+    unsafe.ZeroFormatter.serialize(a)
 
   lazy val bar: Bar = Bar(
     Eval.now("a" * 100),

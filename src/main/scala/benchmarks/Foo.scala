@@ -2,6 +2,7 @@ package benchmarks
 
 import zeroformatter._
 
+@ZeroFormattable
 case class Foo(
   @Index(0) s: String,
   @Index(1) d: Double,
