@@ -27,7 +27,7 @@ val baseSettings = Seq(
   )
 )
 
-val zeroFormatterVersion = "0.4.0"
+val zeroFormatterVersion = "0.5.0"
 
 lazy val benchmark = project.in(file("."))
   .settings(baseSettings)
