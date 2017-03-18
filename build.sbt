@@ -27,7 +27,7 @@ val baseSettings = Seq(
   )
 )
 
-val zeroFormatterVersion = "0.5.0"
+val zeroFormatterVersion = "0.6.0"
 
 lazy val benchmark = project.in(file("."))
   .settings(baseSettings)
@@ -39,7 +39,7 @@ lazy val benchmark = project.in(file("."))
       "com.github.pocketberserker" %% "zero-formatter-cats-core" % zeroFormatterVersion,
       "com.github.pocketberserker" %% "zero-formatter-unsafe" % zeroFormatterVersion,
       "com.github.xuwei-k" %% "msgpack4z-core" % "0.3.5",
-      "com.github.xuwei-k" % "msgpack4z-java" % "0.3.4",
+      "com.github.xuwei-k" % "msgpack4z-java" % "0.3.5",
       "com.trueaccord.scalapb" %% "scalapb-runtime" % com.trueaccord.scalapb.compiler.Version.scalapbVersion % "protobuf",
       "org.scalatest" %% "scalatest" % "3.0.1" % "test"
     )
